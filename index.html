@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nexus - Modern Analytics & Performance Dashboard">
+  <title>Nexus Analytics Dashboard</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <div class="logo-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </div>
+          <span class="logo-text">Nexus<span class="logo-accent">AI</span></span>
+        </div>
+        <button class="icon-btn mobile-close-btn" id="sidebarCloseBtn" aria-label="Close Sidebar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <span class="nav-label">Main Menu</span>
+          <a href="#" class="nav-item active" data-tab="overview">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg>
+            <span>Overview</span>
+          </a>
+          <a href="#" class="nav-item" data-tab="analytics">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            <span>Analytics</span>
+          </a>
+          <a href="#" class="nav-item" data-tab="orders">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+            <span>Orders</span>
+            <span class="badge">12</span>
+          </a>
+          <a href="#" class="nav-item" data-tab="customers">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span>Customers</span>
+          </a>
+        </div>
+
+        <div class="nav-section">
+          <span class="nav-label">Management</span>
+          <a href="#" class="nav-item" data-tab="products">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            <span>Products</span>
+          </a>
+          <a href="#" class="nav-item" data-tab="settings">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            <span>Settings</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Sidebar Pro Upgrade Banner -->
+      <div class="sidebar-footer">
+        <div class="pro-card">
+          <div class="pro-icon">⚡</div>
+          <div class="pro-title">Nexus Pro</div>
+          <p class="pro-desc">Unlock advanced AI predictive analytics</p>
+          <button class="btn btn-primary btn-sm" id="upgradeBtn">Upgrade Plan</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="icon-btn sidebar-toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+          <div class="search-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="searchInput" placeholder="Search analytics, orders, customers...">
+            <span class="search-shortcut">⌘K</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Theme Toggle -->
+          <button class="icon-btn" id="themeToggle" title="Toggle Light/Dark Theme">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+
+          <!-- Notifications Dropdown -->
+          <div class="dropdown-wrapper">
+            <button class="icon-btn badge-btn" id="notifBtn" aria-label="Notifications">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+              <span class="pulse-dot"></span>
+            </button>
+            <div class="dropdown-menu notif-menu" id="notifDropdown">
+              <div class="dropdown-header">
+                <h3>Notifications</h3>
+                <span class="badge badge-soft-primary">3 New</span>
+              </div>
+              <div class="notif-list">
+                <div class="notif-item unread">
+                  <div class="notif-icon bg-success-soft">💰</div>
+                  <div class="notif-content">
+                    <p class="notif-text">New sale recorded! <strong>+$1,250.00</strong></p>
+                    <span class="notif-time">2 mins ago</span>
+                  </div>
+                </div>
+                <div class="notif-item unread">
+                  <div class="notif-icon bg-primary-soft">👤</div>
+                  <div class="notif-content">
+                    <p class="notif-text"><strong>Sophia Reed</strong> created an account</p>
+                    <span class="notif-time">15 mins ago</span>
+                  </div>
+                </div>
+                <div class="notif-item unread">
+                  <div class="notif-icon bg-warning-soft">⚠️</div>
+                  <div class="notif-content">
+                    <p class="notif-text">Server load threshold reached 84%</p>
+                    <span class="notif-time">1 hour ago</span>
+                  </div>
+                </div>
+              </div>
+              <div class="dropdown-footer">
+                <a href="#" id="clearNotifsBtn">Mark all as read</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- User Profile -->
+          <div class="user-profile">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Avatar" class="avatar">
+            <div class="user-info">
+              <span class="user-name">Alex Rivera</span>
+              <span class="user-role">Product Lead</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard View Body -->
+      <div class="content-body">
+        <!-- Page Title & Actions -->
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Executive Dashboard</h1>
+            <p class="page-subtitle">Welcome back, Alex! Here is your real-time performance breakdown.</p>
+          </div>
+          <div class="action-group">
+            <div class="date-picker-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <span>Sep 1, 2026 - Sep 20, 2026</span>
+            </div>
+            <button class="btn btn-outline" id="exportBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Export
+            </button>
+            <button class="btn btn-primary" id="addReportBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              Create Widget
+            </button>
+          </div>
+        </div>
+
+        <!-- Metric KPI Cards Grid -->
+        <div class="metrics-grid">
+          <!-- Card 1 -->
+          <div class="metric-card glass-card">
+            <div class="metric-header">
+              <span class="metric-title">Total Revenue</span>
+              <div class="metric-icon bg-indigo">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              </div>
+            </div>
+            <div class="metric-body">
+              <div class="metric-value" id="valRevenue">$128,430.00</div>
+              <div class="metric-trend trend-up">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                <span>+14.8%</span>
+                <span class="trend-label">vs last month</span>
+              </div>
+            </div>
+            <div class="sparkline-container">
+              <canvas id="sparkline1" height="40"></canvas>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="metric-card glass-card">
+            <div class="metric-header">
+              <span class="metric-title">Total Orders</span>
+              <div class="metric-icon bg-emerald">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+              </div>
+            </div>
+            <div class="metric-body">
+              <div class="metric-value" id="valOrders">3,842</div>
+              <div class="metric-trend trend-up">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                <span>+8.2%</span>
+                <span class="trend-label">vs last month</span>
+              </div>
+            </div>
+            <div class="sparkline-container">
+              <canvas id="sparkline2" height="40"></canvas>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="metric-card glass-card">
+            <div class="metric-header">
+              <span class="metric-title">Active Customers</span>
+              <div class="metric-icon bg-cyan">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+              </div>
+            </div>
+            <div class="metric-body">
+              <div class="metric-value" id="valCustomers">18,920</div>
+              <div class="metric-trend trend-up">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                <span>+22.4%</span>
+                <span class="trend-label">vs last month</span>
+              </div>
+            </div>
+            <div class="sparkline-container">
+              <canvas id="sparkline3" height="40"></canvas>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="metric-card glass-card">
+            <div class="metric-header">
+              <span class="metric-title">Conversion Rate</span>
+              <div class="metric-icon bg-rose">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+            </div>
+            <div class="metric-body">
+              <div class="metric-value" id="valConversion">3.42%</div>
+              <div class="metric-trend trend-down">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline><polyline points="17 18 23 18 23 12"></polyline></svg>
+                <span>-0.6%</span>
+                <span class="trend-label">vs last month</span>
+              </div>
+            </div>
+            <div class="sparkline-container">
+              <canvas id="sparkline4" height="40"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Charts Section -->
+        <div class="charts-grid">
+          <!-- Line / Area Analytics Chart Card -->
+          <div class="chart-card glass-card span-col-2">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">Revenue & Expenses Trend</h2>
+                <p class="card-subtitle">Comparing gross revenue vs operational costs</p>
+              </div>
+              <div class="chart-controls">
+                <div class="pill-group" id="timeframeSelector">
+                  <button class="pill-btn" data-range="7d">7D</button>
+                  <button class="pill-btn active" data-range="30d">30D</button>
+                  <button class="pill-btn" data-range="90d">90D</button>
+                  <button class="pill-btn" data-range="1y">1Y</button>
+                </div>
+              </div>
+            </div>
+            <div class="chart-body">
+              <div class="chart-legend">
+                <div class="legend-item"><span class="legend-dot bg-primary"></span> Revenue</div>
+                <div class="legend-item"><span class="legend-dot bg-secondary"></span> Expenses</div>
+              </div>
+              <div class="canvas-wrapper">
+                <canvas id="mainChart"></canvas>
+                <div class="chart-tooltip" id="chartTooltip"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Donut Breakdown Chart Card -->
+          <div class="chart-card glass-card">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">Sales by Category</h2>
+                <p class="card-subtitle">Distribution by product lines</p>
+              </div>
+            </div>
+            <div class="chart-body flex-center">
+              <div class="donut-wrapper">
+                <svg class="donut-chart" viewBox="0 0 100 100" id="donutSvg">
+                  <!-- SVG tracks injected dynamically in JS -->
+                </svg>
+                <div class="donut-center-text">
+                  <span class="donut-total">$128.4k</span>
+                  <span class="donut-label">Total Sales</span>
+                </div>
+              </div>
+              <div class="donut-legend" id="donutLegend">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tables & Activity Bottom Grid -->
+        <div class="bottom-grid">
+          <!-- Recent Orders Table -->
+          <div class="table-card glass-card span-col-2">
+            <div class="card-header flex-between">
+              <div>
+                <h2 class="card-title">Recent Transactions</h2>
+                <p class="card-subtitle">Latest incoming orders and payment status</p>
+              </div>
+              <div class="filter-controls">
+                <select class="custom-select" id="statusFilter">
+                  <option value="all">All Statuses</option>
+                  <option value="Completed">Completed</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Processing">Processing</option>
+                  <option value="Failed">Failed</option>
+                </select>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table" id="ordersTable">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Payment Method</th>
+                    <th>Status</th>
+                    <th class="text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="ordersTableBody">
+                  <!-- Rows rendered dynamically via app.js -->
+                </tbody>
+              </table>
+            </div>
+            <div class="table-footer flex-between">
+              <span class="table-info" id="tableInfo">Showing 1 to 5 of 12 orders</span>
+              <div class="pagination">
+                <button class="page-btn" id="prevPage" disabled>Prev</button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn" id="nextPage">Next</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top Performing Products & Activity -->
+          <div class="side-widgets">
+            <!-- Top Products Widget -->
+            <div class="widget-card glass-card">
+              <div class="card-header">
+                <h2 class="card-title">Top Products</h2>
+                <a href="#" class="link-btn">View All</a>
+              </div>
+              <div class="products-list">
+                <div class="product-item">
+                  <div class="product-icon bg-indigo-soft">💻</div>
+                  <div class="product-details">
+                    <div class="product-name">MacBook Pro M3 Max</div>
+                    <div class="progress-bar-bg">
+                      <div class="progress-bar-fill bg-indigo" style="width: 82%;"></div>
+                    </div>
+                  </div>
+                  <div class="product-revenue">$42,900</div>
+                </div>
+
+                <div class="product-item">
+                  <div class="product-icon bg-cyan-soft">📱</div>
+                  <div class="product-details">
+                    <div class="product-name">iPhone 15 Pro Max</div>
+                    <div class="progress-bar-bg">
+                      <div class="progress-bar-fill bg-cyan" style="width: 65%;"></div>
+                    </div>
+                  </div>
+                  <div class="product-revenue">$31,200</div>
+                </div>
+
+                <div class="product-item">
+                  <div class="product-icon bg-emerald-soft">🎧</div>
+                  <div class="product-details">
+                    <div class="product-name">Sony WH-1000XM5</div>
+                    <div class="progress-bar-bg">
+                      <div class="progress-bar-fill bg-emerald" style="width: 48%;"></div>
+                    </div>
+                  </div>
+                  <div class="product-revenue">$18,450</div>
+                </div>
+
+                <div class="product-item">
+                  <div class="product-icon bg-rose-soft">⌚</div>
+                  <div class="product-details">
+                    <div class="product-name">Apple Watch Ultra 2</div>
+                    <div class="progress-bar-bg">
+                      <div class="progress-bar-fill bg-rose" style="width: 34%;"></div>
+                    </div>
+                  </div>
+                  <div class="product-revenue">$12,100</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activity Log Widget -->
+            <div class="widget-card glass-card">
+              <div class="card-header">
+                <h2 class="card-title">Live System Activity</h2>
+              </div>
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="timeline-dot bg-emerald"></div>
+                  <div class="timeline-content">
+                    <p class="timeline-text">System backup completed successfully</p>
+                    <span class="timeline-time">10 mins ago</span>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-dot bg-indigo"></div>
+                  <div class="timeline-content">
+                    <p class="timeline-text">New API Key generated for <strong>MobileApp</strong></p>
+                    <span class="timeline-time">42 mins ago</span>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-dot bg-amber"></div>
+                  <div class="timeline-content">
+                    <p class="timeline-text">Database index optimized (query time -18%)</p>
+                    <span class="timeline-time">2 hours ago</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Action Modal -->
+  <div class="modal-overlay" id="detailModal">
+    <div class="modal-content glass-card">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">Order Details</h3>
+        <button class="icon-btn" id="modalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Details dynamic content -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="modalDismiss">Close</button>
+        <button class="btn btn-primary" id="modalPrint">Print Invoice</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
