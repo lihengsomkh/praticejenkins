@@ -13,12 +13,5 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('package') {
-            steps {
-                echo 'packing project...'
-                sh 'npm run build'
-            }
-        }
-
     }
 }
